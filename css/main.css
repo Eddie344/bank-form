@@ -434,7 +434,7 @@ input:checked + .slider:before {
 }
 @media (max-width: 767.98px) {
 	.input-information {
-	    top: 107%;
+	    top: -130%;
 	    left: auto;
     	right: 0;
     	z-index: 1;
