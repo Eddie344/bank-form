@@ -16,12 +16,13 @@ select {
 	margin: 0 auto;
 	margin-bottom: 30px;
 	border-radius: 4px;
+	
 }
 .b-input-field {
 	top: 0;
     flex-grow: 1;
     width: 100%;
-    border: 0;
+    border: 1px solid transparent;
     resize: none;
     outline: 0;
     position: relative;
@@ -37,6 +38,7 @@ select {
 	background: #eef2f7;
 	transition: background .2s ease;
 	border-radius: 4px;
+	overflow: hidden;
 }
 .b-input-field:focus {
 	box-shadow: none;
@@ -61,12 +63,12 @@ select {
     will-change: top,font-size,color;
     pointer-events: none;
 }
-.b-input-field:focus +  .b-input-label{
+.b-input-field:focus +  .b-input-label {
 	top: 13px;
 	font-size: 13px;
 	line-height: 18px;
 }
-.b-input-field:valid +  .b-input-label{
+.b-input-field:not(:placeholder-shown) +  .b-input-label {
 	top: 13px;
 	font-size: 13px;
 	line-height: 18px;
@@ -101,7 +103,7 @@ select {
 	margin-top: 0;
 }
 .selectric-open .selectric-items {
-	height: 300px;
+	max-height: 300px;
 	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
 	border: 1px solid #eef2f7;
 }
@@ -297,7 +299,7 @@ input:checked + .slider:before {
 
 /*Textarea*/
 .b-form-textarea {
-	height: 100px;
+	height: 87px;
 	position: relative;
 	min-height: 68px;
 	padding: 0;
@@ -305,15 +307,69 @@ input:checked + .slider:before {
 	max-width: 600px;
 	margin: 0 auto;
 	margin-bottom: 30px;
+	border-radius: 4px;
+	z-index: 1;
 }
 .b-textarea {
-	height: 100px;
+	height: 87px;
+	top: 0;
+    flex-grow: 1;
+    width: 100%;
+    border: 1px solid transparent;
+    resize: none;
+    outline: 0;
+    position: relative;
+    display: inline-block;
+    padding-top: 30px;
+    padding-bottom: 9px;
+    padding-left: 17px;
+    padding-right: 18px;
+    font-size: 17px;
+    line-height: 24px;
+    color: #333;
+	background: #eef2f7;
+	transition: background .2s ease;
+	border-radius: 4px;
+	overflow: hidden;
 }
-
+.b-textarea-label {
+	position: absolute;
+    top: 21px;
+    left: 17px;
+    color: #9299a2;
+    font-size: 17px;
+    line-height: 24px;
+    font-weight: 400;
+    text-align: left;
+    white-space: nowrap;
+    transition-duration: .1s;
+    transition-property: top,font-size;
+    transition-timing-function: ease-in-out;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: top,font-size,color;
+    pointer-events: none;
+    background-color: #eef2f7;
+}
+.b-textarea:focus + .b-textarea-label {
+	padding-top: 10px;
+	padding-right: 200px;
+	top: 0;
+	font-size: 13px;
+	line-height: 18px;
+}
+.b-textarea:not(:placeholder-shown) + .b-textarea-label {
+	padding-top: 10px;
+	padding-right: 200px;
+	top: 0;
+	font-size: 13px;
+	line-height: 18px;
+}
 /*Has Error*/
 .has-error {
 	border-color: #dc3545;
 	margin-bottom: 48px;
+	z-index: 1;
 }
 .has-error .invalid-feedback {
 	display: block;
@@ -368,13 +424,22 @@ input:checked + .slider:before {
 	margin-left: 24px;
 	border: 1px solid #eef2f7;
 	border-radius: 4px;
-	min-width: 160px;
+	min-width: 150px;
 	width: 284px;
 	position: absolute;
 	top: -8%;
 	left: 100%;
 	opacity: 0;
 	transition: opacity .3s ease;
+}
+@media (max-width: 767.98px) {
+	.input-information {
+	    top: 107%;
+	    left: auto;
+    	right: 0;
+    	z-index: 1;
+    	background-color: #fff;
+    }
 }
 /*Radio*/
 .b-form-radio-group {
