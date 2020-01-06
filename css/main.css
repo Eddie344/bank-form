@@ -522,6 +522,7 @@ input:checked + .slider:before {
 }
 .tooltip .arrow:before {
 	border-top-color: #fff;
+	border-bottom-color: #fff;
 }
 .tooltip.show {
 	opacity: 1;
